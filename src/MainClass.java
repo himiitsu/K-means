@@ -11,22 +11,22 @@ public class MainClass {
         container = fileHandler.Reader("C:\\Users\\Mig\\Desktop\\kmeans.txt");
 
 
-        Claster[] claster = new Claster[container.get(0).numOfClusters];
+        Cluster[] cluster = new Cluster[container.get(0).numOfClusters];
 
         //System.out.println(container.get(0).factors.get(0).name + " " + container.get(0).numOfClusters);
 
         Kmeans kmeans = new Kmeans();
-        kmeans.startPosition(container, claster);
+        kmeans.startPosition(container, cluster);
 
         //for(int i = 0; i < container.get(0).factors.size(); i++) {
 
-            //kmeans.euclidianDistance(container, claster);
+            //kmeans.euclidianDistance(container, cluster);
             //System.out.println(container.get(0).factors.get(i).cluster);
         //}
 
         for(int i = 0; i < 10; i++){
-            kmeans.euclidianDistance(container, claster);
-            kmeans.clustersChanging(container, claster);
+            kmeans.euclidianDistance(container, cluster);
+            kmeans.clustersChanging(container, cluster);
             //System.out.println(container.get(0).factors.get(i).cluster);
            // System.out.println();
         }

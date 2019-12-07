@@ -1,4 +1,4 @@
-public class Claster {
+public class Cluster {
 
     int number;
     double temperature;
@@ -7,7 +7,7 @@ public class Claster {
     double shining;
     int hydrogen;
 
-    public Claster(int number, double temperature, double mass, double diameter, double shining, int hydrogen){
+    public Cluster(int number, double temperature, double mass, double diameter, double shining, int hydrogen){
         this.number = number;
         this.temperature = temperature;
         this.mass = mass;

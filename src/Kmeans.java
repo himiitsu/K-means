@@ -4,18 +4,18 @@ import java.util.Random;
 
 public class Kmeans {
 
-    public Claster[] startPosition(List<Combination> container, Claster[] claster){
+    public Cluster[] startPosition(List<Combination> container, Cluster[] cluster){
 
         Random random = new Random();
 
-        //Claster[] claster = new Claster[container.get(0).numOfClusters];
+        //cluster[] cluster = new cluster[container.get(0).numOfClusters];
 
         /*for(int i = 0; i < container.get(0).numOfClusters; i++){
 
-            //claster[i] = new Claster(i, random.nextInt(30000), random.nextInt(80),
+            //cluster[i] = new cluster(i, random.nextInt(30000), random.nextInt(80),
                     //random.nextInt(600), random.nextInt(14000), random.nextInt(4));
-            //System.out.println(claster[i].temperature + " " + claster[i].mass + " " + claster[i].diameter + " " + claster[i].shining
-            //+ " " + claster[i].hydrogen);
+            //System.out.println(cluster[i].temperature + " " + cluster[i].mass + " " + cluster[i].diameter + " " + cluster[i].shining
+            //+ " " + cluster[i].hydrogen);
 
         }*/
 
@@ -67,20 +67,20 @@ public class Kmeans {
         for (int i = 0; i < k; i++, stepper += step){
 
             //System.out.println(stepper);
-            claster[i] = new Claster(i, container.get(0).factors.get(stepper).temperature,
+            cluster[i] = new Cluster(i, container.get(0).factors.get(stepper).temperature,
                     container.get(0).factors.get(stepper).mass, container.get(0).factors.get(stepper).diameter,
                     container.get(0).factors.get(stepper).shining, container.get(0).factors.get(stepper).hydrogen);
         }
 
-        /*claster[0] = new Claster(0, 22000, 10, 2.6796, 163.77, 2);
-        claster[1] = new Claster(1, 4666,1.47,9.3,30.835, 0);
-        claster[2] = new Claster(2, 3580, 0.15,0.36,0.0013,0);
-        claster[3] = new Claster(3,8720,2.028,1.8467,14.298,3);
-        claster[4] = new Claster(4, 3850,0.62,0.76,0.026,0);*/
-        return claster;
+        /*cluster[0] = new cluster(0, 22000, 10, 2.6796, 163.77, 2);
+        cluster[1] = new cluster(1, 4666,1.47,9.3,30.835, 0);
+        cluster[2] = new cluster(2, 3580, 0.15,0.36,0.0013,0);
+        cluster[3] = new cluster(3,8720,2.028,1.8467,14.298,3);
+        cluster[4] = new cluster(4, 3850,0.62,0.76,0.026,0);*/
+        return cluster;
     }
 
-    public Claster[] euclidianDistance(List<Combination> container, Claster[] claster){
+    public Cluster[] euclidianDistance(List<Combination> container, Cluster[] cluster){
 
         Double[][] distance = new Double[container.get(0).factors.size()][container.get(0).numOfClusters];
         double min;
@@ -88,11 +88,11 @@ public class Kmeans {
         for(int i = 0; i < container.get(0).factors.size(); i++){
             for(int j = 0; j < container.get(0).numOfClusters; j++){
 
-                distance[i][j] = Math.sqrt(Math.pow(claster[j].temperature - container.get(0).factors.get(i).temperature, 2) +
-                        Math.pow(claster[j].mass - container.get(0).factors.get(i).mass, 2) +
-                        Math.pow(claster[j].diameter - container.get(0).factors.get(i).diameter, 2) +
-                        Math.pow(claster[j].shining - container.get(0).factors.get(i).shining, 2) +
-                        Math.pow(claster[j].hydrogen - container.get(0).factors.get(i).hydrogen, 2));
+                distance[i][j] = Math.sqrt(Math.pow(cluster[j].temperature - container.get(0).factors.get(i).temperature, 2) +
+                        Math.pow(cluster[j].mass - container.get(0).factors.get(i).mass, 2) +
+                        Math.pow(cluster[j].diameter - container.get(0).factors.get(i).diameter, 2) +
+                        Math.pow(cluster[j].shining - container.get(0).factors.get(i).shining, 2) +
+                        Math.pow(cluster[j].hydrogen - container.get(0).factors.get(i).hydrogen, 2));
                 //System.out.println(container.get(0).factors.get(i).temperature);
             }
 
@@ -115,10 +115,10 @@ public class Kmeans {
             //System.out.println(container.get(0).factors.get(i).cluster);
         }
 
-        return  claster;
+        return  cluster;
     }
 
-    public Claster[] clustersChanging(List<Combination> container, Claster[] claster) {
+    public Cluster[] clustersChanging(List<Combination> container, Cluster[] cluster) {
 
         Double[] newTemperature = new Double[container.get(0).numOfClusters];
         Double[] newMass = new Double[container.get(0).numOfClusters];
@@ -152,14 +152,14 @@ public class Kmeans {
         }
 
         for(int i = 0; i < container.get(0).numOfClusters; i++) {
-            claster[i].temperature = newTemperature[i]/count[i];
-            claster[i].mass = newMass[i]/count[i];
-            claster[i].diameter = newDiameter[i]/count[i];
-            claster[i].shining = newShining[i]/count[i];
-            claster[i].hydrogen = newHydrogen[i]/count[i];
+            cluster[i].temperature = newTemperature[i]/count[i];
+            cluster[i].mass = newMass[i]/count[i];
+            cluster[i].diameter = newDiameter[i]/count[i];
+            cluster[i].shining = newShining[i]/count[i];
+            cluster[i].hydrogen = newHydrogen[i]/count[i];
             //System.out.println();
         }
 
-        return claster;
+        return cluster;
     }
 }
